@@ -5,6 +5,7 @@ import java.awt.*;
 public class Game {
 
     private JFrame frame;
+    public static TicTacToeCell[][] cells = new TicTacToeCell[3][3];
 
     public static void main(String[] args) {
         new Game().run();
@@ -17,7 +18,8 @@ public class Game {
 
         for(int i=0; i<3; i++){
             for(int j=0; j<3; j++){
-                panel.add(new TicTacToeCell(i, j));
+                TicTacToeCell c = new TicTacToeCell(i, j);
+                panel.add(cells[i][j] = c);
             }
         }
 
@@ -25,6 +27,7 @@ public class Game {
         GameValues.getInst(3, 3);
         frame.setSize(600,600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(false);
         frame.add(panel, BorderLayout.CENTER);
         frame.add(GameValues.getInst().getJlblstatus(), BorderLayout.SOUTH);
         frame.setVisible(true);
